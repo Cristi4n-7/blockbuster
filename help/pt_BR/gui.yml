@@ -1,0 +1,962 @@
+# GUI
+
+blockbuster.gui:
+    # General strings
+    done: Pronto
+    next: Proxímo
+    previous: Anterior
+    restore: Estaurar padrão
+    reset: Reiniciar
+    add: Adicionar
+    edit: Editar
+    remove: Remover
+    record: Gravar
+    pick: Selecionar Morph
+    duplicate: Duplicar
+    search: Pesquisar
+    cancel: Cancelar
+    select: Selecionar
+    ok: Ok
+    billboard: Olhar para player
+
+    # First time module
+    first_time:
+        title: "Primeira vez?"
+        welcome: "Bem-vindo ao Blockbuster mod \n\nSe você está usando esse mod pela primeirav vez, você talvez queira dar uma olhada na serie de tutoriais de vídeos {a}Blockbuster academy{r} no {c}YouTube{r}."
+        social: "Se você encontrar quais queres problemas, se sinta livre em entrar no meu servidor do {6}Discord{r} para ajuda. Também, se sinta livre para me seguir no {b}Twitter{r}, Eu posto atualizações do mod lá."
+
+    # Morphs popup strings
+    morphs:
+        acquire: "Adquirir Morph"
+        pose: Pose
+        sneak: Aplicar ao agachar
+        reset: Redefinir pose
+        create: Criar pose
+
+        keys:
+            toggle_gui_model: Alternar renderização de modelo dentro do editor
+    
+    dashboard: 
+        main: Painel
+        director: Cena
+        model: Bloco de modelo
+        model_editor: Editor de modelos
+        player_recording: Editor de gravação do player
+        texture: Gerir textura
+        particle: Editor de partículas
+    
+    # Main page of dashboard
+    main:
+        resources: Recursos
+        wiki: Wiki
+        discord: Discord
+        tutorial: Vídeo de tutorial
+        models: Abrir modelos...
+        skins: Abrir skins...
+
+        reset_audio: Reset audio tracks
+        open_audio: Open audio tracks...
+        
+        options: Opções
+    
+    # Scenes GUI strings
+    director:
+        config: Opções gerais
+        not_selected: Selecionar cena...
+        no_replays: Criar um replay...
+
+        add_replay: Adicionar um replay
+        dupe_replay: Duplicar replay selecionado
+        remove_replay: Remover replay selecionado
+
+        display_title: Mostrar título
+        start_command: Ao iniciar o comando
+        stop_command: Ao parar o comando
+        loops: Loops
+
+        audio: Linha de áudio
+        audio_tooltip: Selecionar a linha de áudio que será usada para a sincronização para o audio da cena
+        audio_shift: Atraso do áudio
+        audio_shift_tooltip: Quão o áduio deverá atrasar, i.e. encurtado, em ticks.
+        open_audio_folder: Abrir pasta com as linhas de áudio
+        
+        id: Gravar ID
+        name: Marcação do nome
+        name_tooltip: Name tag of the actor. You can use this to target this actor via commands (like @e[name=Test]) or just display name.\n\nYou can use [ as the section symbol for display name formatting. [cR[aG[1B[r becomes {c}R{a}G{1}B{r}.
+        target: Alvo
+        target_tooltip: Here you can specify which player should be used to playback this replay.\n\nAdditional target selectors can be used to pick players beside by their username. @r - random player, @{n}team{r} - where {n}team{r} is the name of the scoreboard team.
+        playback_xp_food_level: Playback XP & food
+        playback_xp_food_level_enabled: Enabled
+        playback_xp_food_level_tooltip: Playback the experience and food level recorded. If you experience issues or want this stuff to be executed dynamically, deactivate the playback.
+        invincible: Invincible
+        invisible: Invísivel
+        enable_burning: Permitir queimar
+        enabled: Habilitado
+        fake_player: Player falso
+        tp_back: Teleportar para trás
+        tp_back_tooltip: Teleportar você mesmo de volta á posição inicial
+        render_last: Renderizar por último
+        render_last_tooltip: Makes an actor to be rendered last, which should fix in most of cases opaque actors appear behind actors with semi-transparent morphs.\n\nThis option requires Always render actors mod options to be enabled, and fake player option for this actor to be disabled.
+        health: Saúde
+        total_experience: Total de expêriencia
+        food_level: Nível de fome
+        edit_record: Editar gravação
+        update_data: Atualizar dados
+        update_data_tooltip: Atualiza os dados do player no arquivo da gravação
+        rename_prefix: Renomear prefixo
+        rename_prefix_tooltip: Renomear o ID do replay da gravação com o novo prefixo
+        rename_replay_dupe_modal: Esse ID do replay já existe nessa cena. Você deverá querer usar isso denovo se você desejar.
+        rename_prefix_popup: "Introduzir novo prefixo:"
+
+        rotation_filter:
+            title: Rotation filter
+            head_yaw: Head yaw
+            head_pitch: Head pitch
+            body_yaw: Body yaw
+            channel_tooltip: The rotation channel that should be filtered.
+            to_tooltip: To tick
+            from_tooltip: From tick
+            execute: Execute
+            success: Success
+            frame_chunk_error: Frames overwrite error. The received frames chunk cannot be inserted properly.
+            exception: Failure, an exception happened during executing the rotation filter.
+            record_save_error: An error happened while saving the record on the server.
+            not_enough_frames: Not enough frames were provided.
+            record_not_loaded: The recording could not be loaded.
+            empty_filtered_frames: The list of filtered frames is empty.
+
+
+        attach: Attach
+        attach_tooltip: Attach this scene to currently held playback button.\n\nAlternatively, you can also attach a playback button by holding it, and right clicking it while sneaking.
+
+        camera: Edit camera
+        tp: Teleport
+        tp_tooltip: Teleport yourself to the replay's starting position
+
+        none: "(none)"
+
+        keys:
+            category: Scenes
+
+            toggle_list: Toggle scenes list
+            toggle_options: Toggle general options
+
+    scenes:
+        title: Scenes
+
+        add_scene: "Add a scene..."
+        dupe_scene: "Duplicate selected scene..."
+        rename_scene: "Rename selected scene..."
+        remove_scene: "Remove selected scene..."
+
+        add_modal: "Enter a name for a new scene:"
+        dupe_modal: "Enter a name for duplicated scene:"
+        dupe_recordings: "Copy recordings"
+        dupe_recordings_tooltip: "When enabled, player recordings will be duplicated to files with new names"
+        rename_modal: "Enter a new name for current scene:"
+        remove_modal: "Are you sure you want to remove this scene?"
+    
+    # Actor configuration GUI strings
+    actor:
+        title: Actor Configuration
+        
+        default: Default
+        name: Name
+        filename: Recording ID
+        invincible: Can be killed?
+        invisible: Is visible?
+        attached: Attached to actor
+        yaw: Yaw 
+        pitch: Pitch 
+    
+    # Model block GUI strings
+    model_block:
+        title: Model blocks
+        not_selected: Select a model block...
+        
+        x: X
+        "y": "Y"
+        z: Z
+        yaw: Yaw
+        pitch: Pitch
+        body: Body yaw
+        one: One
+        one_tooltip: Uniform one slider scale
+        shadow: Shadow
+        global: Global
+        global_tooltip: Enables surpassing of chunk culling
+        enabled: Enabled
+        enabled_tooltip: Enables model block rendering
+        render_last: Render last
+        render_last_tooltip: Makes a model block to be rendered last. Use this on semi transparent model blocks. This should fix in most of the cases model blocks not being rendered behind semi transparent model blocks.
+        render_always: Render always
+        render_always_tooltip: Render the model block even when the Blockbuster config {config.model_block.model_block_disable_rendering} option is enabled.
+        exlude_reset_playback: Prevent reset
+        exlude_reset_playback_tooltip: Prevent reset when scene playbacks and Blockbuster model block {config.model_block.reset_on_playback} configuration is enabled.
+        enable_hitbox: Enable hitbox
+        enable_hitbox_tooltip: Enable the hitbox of the block. It is the standard Minecraft block hitbox.
+
+        light_level: Light value
+        light_level_tooltip: Emits light with the given level, Minecraft's maximum light value is 15.
+        look: Rotate at you
+        
+        entity: Entity
+        translate: Translate
+        rotate: Rotate
+        scale: Scale
+    
+    # Player recording editor GUI strings
+    record_editor:
+        title: Recordings
+        directors: Scene's records
+        not_selected: Select a player recording...
+        action: action
+
+        cut: Cut actions
+        copy: Copy actions
+        paste: Paste actions
+        capture: Record from cursor
+        teleport: Teleport at cursor
+
+        deselect: Deselect actions
+        select_all: Select all actions
+
+
+        drop: Drop block
+        damage: Damage
+        progress: Progress
+        mounting: Mounting
+        meta: Meta value
+        arrow_charge: Arrow charge
+        no_fields: This action doesn't have any editable fields...
+        
+        actions:
+            chat: 
+                title: Chat
+                desc: This action outputs a chat message
+            swipe: 
+                title: Swipe
+                desc: This action makes the actor swing his main hand
+            drop:
+                title: Item drop
+                desc: Throws an item down (as if Q key was pressed)
+            equip:
+                title: Equip an item
+                desc: Equips an item in one of the hand or armor slots
+                
+                none: None
+                main_hand: Main hand
+                feet: Feet
+                legs: Leggings
+                chest: Chest
+                head: Head
+                off_hand: Off hand
+            shoot_arrow:
+                title: Shoot arrow
+                desc: Shoots a regular arrow with given force
+            place_block:
+                title: Place block
+                desc: Places a specified block on given block position
+            mounting:
+                title: Mounting
+                desc: Mounts or unmounts an entity standing in front
+            interact_block:
+                title: Interact block
+                desc: Makes actor interact with a block
+            break_block:
+                title: Break block
+                desc: Breaks a block at given position
+            morph:
+                title: Morph
+                desc: Morphs the actor into picked morph
+            attack:
+                title: Attack
+                desc: Deals damage to an entity in front of actor (make sure to change difficulty from peaceful, if you want to use it with players) 
+            damage:
+                title: Damage
+                desc: Inflicts some damage to the actor entity
+            morph_action:
+                title: Morph action
+                desc: Uses morph's action, if the actor is morphed
+            command:
+                title: Command
+                desc: Executes a command using the actor 
+            break_animation:
+                title: Break block animation
+                desc: Performs a breaking block animation (block cracks) on given block position
+            use_item:
+                title: Item use
+                desc: Uses an item currently held in given hand
+            use_item_block:
+                title: Item block use
+                desc: Uses an item currently held in given hand on a block with given facing and a hit vector
+
+                down: Down
+                up: Up
+                north: North
+                south: South
+                west: West  
+                east: East
+            interact_entity:
+                title: Interact with entity
+                desc: Interacts with entity at which currently the actor is looking (used with some items like name tags, item frames or modded entities)
+            close_container:
+                title: Close Container
+                desc: Closes the container opened by the actor, which usually closes the chest the actor previously interacted with. (Available only if the actor is a fake player)
+            use_gun:
+                title: Shoot gun
+                desc: Shoots a BB gun that was held by the actor during recording (even if the actor doesn't hold it anymore)
+            hotbar_change:
+                title: Hotbar change
+                desc: Change the specified hotbar slot to the specified item stack.
+                slot_tooltip: The slot to change
+                durability_tooltip: The durability of the item in percent
+
+    # Playback GUI
+    playback:
+        title: Playback configuration
+        camera_mode: Camera mode
+        profile: Profile filename
+        scene: Scene
+
+        nothing: Do nothing
+        play: Play only
+        load_profile: Load and play
+
+    builder:
+        pose_editor: Pose editor
+        body_part: Body part
+        materials: Materials
+        nbt: NBT
+
+        pick_model: Pick model
+        pick_skin: Pick skin
+        pose_sneak: Sneaking pose
+        pose: Pose
+        
+        obj_materials: OBJ materials
+        pick_texture: Pick texture
+        
+        limbs: Limbs
+        body_parts: Body parts
+        use_target: Use target
+
+        shape_keys: Shape keys
+        shape_keys_factor: Shape keys factor
+        shape_keys_factor_tooltip: This field determines the factor of how much a shape key will be applied (0 = no effect, 1 = full deform)
+        relative: Relative
+        relative_tooltip: This option allows to apply the transformations relatively on top of the current one
+
+        context:
+            add: Add a shape key...
+            add_to: "Add \"%s\" shape key"
+            remove: Remove this shape key
+            children: Apply to children
+        
+        limb:
+            absolute_brighness: Absolute Brightness
+            glow: Limb Glow
+            color: Limb Color
+            fixed: Fixate movement
+
+    image:
+        crop: Crop
+        left: Left
+        right: Right
+        top: Top
+        bottom: Bottom
+        resize_crop: Resize crop
+        dimensions: "Size (%spx, %spx)"
+        offset_x: X coordinate shift
+        offset_y: Y coordinate shift
+        rotation: Coordinate rotation
+        keying: Keying
+        keying_tooltip: This option clears the color data on the screen (in framebuffer) where this morph was rendered, which can be used for Minema's 'Use alpha' option to record keyed footage without external video editing plugins
+        shadow: Shadow
+        shadow_tooltip: Whether this image morph should cast shadow with Optifine's shaders (this can fix image morph shading itself when too big), without Optifine it's useless
+        remove_parent_space_effects: Remove parent space
+        remove_parent_space_effects_tooltip: Remove the rotation and scale of the parent space on this image. If deactivated, it could result in weird deformations together with "Look at player" option.
+
+    sequencer:
+        duration: Duration
+        random: Random
+        set_duration: Set duration
+        set_duration_tooltip: "When enabled, this option will take the calculated duration and assign it to picked morph that supports \"animates\" property, the actual duration will be set to \"1\""
+        reverse: Reverse
+        no_morph: (no morph)
+        morphs: Morphs
+        random_order: Random order
+        truly_random_order: Truly random
+        keep_progress: Keep progress
+        ticks: ticks
+        add_part_tooltip: Add a morph to the list. If you hold down the Ctrl key, it will be the next morph, otherwise it will be the last one.
+        loop: Loop
+        loop_tooltip: Set loop counts, 0 for endless loop.
+        loop_offset: Loop offset
+        loop_offset_count: Offset count
+        end_point: End point
+        end_point_tooltip: Set the end point of this sequencer morph, if random is enabled, it also be used to count loops.
+
+        preview_tick: Preview tick of this sequencer morph
+
+        generate_morph: Generate morph
+        generate_morph_tooltip: Generate a morph from current preview
+
+        keys:
+            toggle: Toggle sequencer playback
+            stop: Stop sequencer playback
+
+    particle:
+        tooltip: General properties
+        emission: Emission properties
+        morph: Morph properties
+        vanilla: Vanilla properties
+        common: Common properties
+
+        type: Particle type
+        types:
+            vanilla: Vanilla
+            morph: Morph
+
+        pick_type: Pick type
+        pick_type_tooltip: Pick morph movement type
+
+        particle: Pick particle
+        frequency: Frequency
+        dx: Offset X
+        dy: Offset Y
+        dz: Offset Z
+        speed: Speed
+        count: Count
+        local_rotation: Local rotation
+        local_rotation_tooltip: When attached to body parts, vanilla particles will be emitted relative to body part's rotation, otherwise they'll emitted relative to the world
+        args: Additional arguments
+
+        fade: Fade
+        maximum: Maximum
+        cap: Capacity
+
+    snowstorm:
+        variables: Variables
+        expression: Mathematical expression
+
+        title: Particles
+        mode: Mode
+        add_modal: "Enter a name for a new blank particle effect:"
+        dupe_modal: "Enter a new name for a copy of current particle effect:"
+        remove_modal: "Are you sure you want to remove this particle effect for ever?"
+
+        open_tooltip: Particle effect manager
+        save_tooltip: Save current particle effect
+        add_tooltip: Create a new particle effect
+        dupe_tooltip: Duplicate current particle effect
+        remove_tooltip: Remove current particle effect
+        remove_factory_tooltip: You cannot remove a factory preset...
+        folder_tooltip: Open folder with particle effects
+
+        keys:
+            category: Particle editor
+            save: Save current particle effect
+
+        general:
+            title: General
+            pick: Pick texture
+
+            play_playing: Playing
+            play_paused: Paused
+
+            identifier: Identifier of this particle effect, this can be used as a display name, but in Bedrock edition it's an ID of the particle effect
+
+            particles_opaque: Opaque
+            particles_alpha: Alpha
+            particles_blend: Blend
+            particles_additive: Additive
+
+        particle_morph:
+            title: Morph
+            enabled: Enabled
+            render_texture: Still render billboard
+
+        space:
+            title: Particle space
+
+            position: Local position
+            position_tooltip: Particles will simulate in entity space.
+            rotation: Local rotation
+            rotation_tooltip: Particle rotation will simulate in entity space. Only works if local position is enabled too.
+            scale: Local scale
+            scale_tooltip: It scales the particles according to the target's scale. It works best with local position and rotation. It doesn't work well with collision!
+            direction: Local direction
+            direction_tooltip: It rotates the direction vector according to the target's rotation at spawn time once.
+            acceleration: Local acceleration
+            acceleration_tooltip: It rotates the acceleration vector according to the target's rotation throughout the whole lifetime.
+            gravity: Gravity
+            scale_billboard: Scale texture
+            scale_billboard_tooltip: It scales the particle's texture size according to the target's scale.
+            object_velocity_title: Object
+            linear_velocity: Velocity
+            linear_velocity_tooltip: Let the object give the particle a starting velocity. The velocity gets calculated by the position change of the snowstorm morph, multiplied by the given factor. It gets added to the particle's velocity at spawntime.
+            angular_velocity: Angular velocity
+            angular_velocity_tooltip: The angular velocity gets calculated by the rotation change of the snowstorm morph, multiplied by the given factor. It gets added to the particle's velocity at spawntime. The radius is the translation of the snowstorm morph bodypart.
+
+        initialization:
+            title: Initialization expressions
+
+            emitter_expression_title: Emitter expressions (Bedrock Edition)
+            create: Creation expression, it runs when emitter starts
+            update: Update expression, it runs every tick
+            
+            particle_expression_title: Particle expressions (Blockbuster)
+            particle_update_expression: Particle expression, it runs for every particle. They are local to every particle
+
+        rate:
+            title: Spawn rate
+
+            instant: Instant
+            steady: Steady
+
+            spawn_rate: Spawn rate expression determines how many particles in a second will be emitted
+            max_particles: How many particles at the same time will be present
+            particles: How many particles will get emitted at once
+
+        lifetime:
+            title: Emitter's lifetime
+
+            expression: Expression
+            looping: Looping
+            once: Once
+
+            active_expression: Expression that responsible for restarting the emitter, if evaluated result is a non-zero
+            active_looping: Expression that determines for how long a single cycle will be active before a sleeping phase
+            active_once: Expression that determines for how long the single cycle should be active
+
+            expiration_expression: Expression that responsible for stopping the emitter, if evaluated result is a non-zero
+            sleep_time: Expression that determines for how long emitter will be sleeping before next cycle
+
+        shape:
+            title: Emitter's shape
+
+            shape: Shape
+            point: Point
+            box: Box
+            sphere: Sphere
+            disc: Disc
+            aabb: Entity's hitbox
+
+            offset: Offset
+            direction: Direction
+            direction_outwards: Outwards
+            direction_inwards: Inwards
+            direction_vector: Vector
+
+            surface: Surface
+            surface_tooltip: Spawn particles around the surface of the shape
+
+            box_size: Box size
+
+            normal: Normal
+            radius: Radius
+
+        motion:
+            title: Motion
+
+            dynamic: Dynamic
+            parametric: Parametric
+
+            position: Position
+            position_speed: Initial speed
+            speed: Speed
+            acceleration_title: Acceleration
+            acceleration_x: X acceleration
+            acceleration_y: Y acceleration
+            acceleration_z: Z acceleration
+            position_drag_title: Air drag
+            position_drag: Motion drag
+
+            rotation: Rotation
+            rotation_angle: Initial rotation
+            rotation_speed: Initial rotation speed
+            rotation_acceleration: Rotation acceleration
+            rotation_drag: Rotation drag
+
+        expiration:
+            title: Particle's lifetime
+
+            expression: Expression
+            expression_tooltip: This expression keeps particle alive until the expression's result is a zero
+            max: Max
+            max_tooltip: This expression defines particle's lifetime in terms of seconds)
+
+            kill_plane: Kill plane
+            kill_plane_tooltip: You can specify a plane in terms of Ax + By + Cz + D = 0, if a particle crosses this plane, then it expires
+
+            in_blocks: Expire in blocks
+            not_in_blocks: Expire not in blocks
+
+        appearance:
+            title: Texture
+
+            regular: Regular
+            animated: Animated
+            
+            camera_facing:
+                label: Facing mode
+                
+                direction_x: Direction X
+                direction_y: Direction Y
+                direction_z: Direction Z
+                direction_mode:
+                    motion: Motion
+                    custom: Custom Direction
+                    direction_x_tooltip: Custom X direction
+                    direction_y_tooltip: Custom Y direction
+                    direction_z_tooltip: Custom Z direction
+                    speed_threshold_tooltip: Speed threshold
+                lookat_xyz: Look at XYZ
+                lookat_y: Look at Y
+                lookat_direction: Look at Direction
+                rotate_xyz: Rotate XYZ
+                rotate_y: Rotate Y
+                emitter_xy: Emitter XY-Plane
+                emitter_xz: Emitter XZ-Plane
+                emitter_yz: Emitter YZ-Plane
+            
+            size: Billboard size
+            width: Width
+            height: Height
+
+            mapping: UV mapping
+            uv_x: Texture coordinate X expression
+            uv_y: Texture coordinate Y expression
+            uv_w: Width of texture quad
+            uv_h: Height of texture quad
+            step_x: Coordinate step X per frame
+            step_y: Coordinate step Y per frame
+            fps: Animation frames per second
+            max: Maximum frames in the animation
+            stretch: Stretch
+            stretch_tooltip: Stretch texture animation to the lifetime of the particle
+            loop: Loop
+            loop_tooltip: Rewind the animation back to start when it reaches the last (maximum) frame
+
+        lighting:
+            title: Color and lighting
+
+            lighting: Lighting
+            lighting_tooltip: Use the Minecraft shadow for rendering. If it is deactivated the particles will glow.
+
+            solid: Solid
+            expression: Expression
+            gradient: Gradient
+
+            interpolant_tooltip: Color gradient interpolant
+            range_tooltip: Color gradient range
+
+            red: Red
+            green: Green
+            blue: Blue
+            alpha: Alpha
+
+            context:
+                add_stop: Add a gradient color
+                remove_stop: Remove a gradient color
+
+        collision:
+            title: Collision
+
+            enabled: Enabled
+            condition_tooltip: Enables collision when true / non-zero or unset
+            realistic_collision: Realistic collision
+            preserve_energy: Preserve energy
+            preserve_energy_tooltip: Preserve energy option allows to preserve velocity of particles after collision
+            entity_collision: Collision with entities
+            momentum: Momentum for entity collision
+            realistic_collision_drag: Realistic collision drag
+            realistic_collision_drag_tooltip: Collision drag will be reset when particle stops colliding. Activating this will also fix particles accelerating away with high collision drag values.
+            drag: Collision drag adds a drag (slowdown) after particle's collision with blocks in the world
+            rotation_drag: Rotation drag that should happen on collision. It will slow down the texture rotation.
+            bounciness: Bounciness multiplies particle's acceleration after collision
+            random_direction: Random Direction - randomize the direction vector. It doesn't affect the velocity.
+            damping:
+                title: Damping
+                strength: Damping - reduce the velocity on impact. Valid values are between 0 and 1. 1=highest damping -> reduces velocity completely
+                randomness: Randomize the damping
+
+            split_particle:
+                title: Split particle
+                
+                count: Split the particle on impact into the given count - speed is divided by the count
+                speed_threshold: speed threshold to activate the split process
+
+            radius: Radius of particle's hitbox
+            expire: Expire on contact
+            expiration_delay: Delay the expiration. Measured in ticks - 20 = 1 second
+            
+            appearance:
+                title: Texture on colllision
+            lighting:
+                title: Color and lighting on collision
+
+    record_morph:
+        random_skip: Random Skip
+
+    structure_morph:
+        lighting: Lighting
+        anchor: Anchor point
+
+    tracker_morph:
+        name: Tracker
+        label:
+            title: Name
+        type:
+            title: Type
+            aperture_tracker: Morph tracking
+            apcam: Aperture Modifier
+        hidden: Hide pointer
+
+        aperture_tracker:
+            combine_tracking: Automatic append
+            combine_tracking_tooltip: (for Aperture tracking) If the tracker's name already was tracked, it will check if this tracker starts at the next frame where the original tracker has stopped. If it is continuing at the next frame, it then appends this tracking data to the original one.
+
+    light_morph:
+        name: Light
+        light_value: Light value
+        light_value_tooltip: You need to have Optifine installed and dynamic lights set to fancy for this to work. This slider allows to choose the strength of the light.
+
+    betterlights_morph:
+        name: BetterLights
+        sponsored_title: Sponsored by...
+        sponsored_tooltip: "Made possible by donations. Thank you!"
+        enable_always: Enable always
+        enable_always_tooltip: Enable the morph even when the blockbuster configuration {config.better_lights.enable_better_lights} is disabled.
+        not_installed_message: You need the BetterLights mod for this morph to work.
+        mod_page_button: Open mod page
+        #the option keys are derived from the config property names of BetterLights, where spaces are replaced with underscores.
+        #if it's a tooltip, the string "_tooltip" will be attached to the end.
+        #sub categories always have a title
+        #all language keys are converted to lowercase
+        options:
+            enabled: Enabled
+            direction: Direction
+            directionx_tooltip: X
+            directiony_tooltip: Y
+            directionz_tooltip: Z
+            color: Light color
+            intensity_tooltip: Light intensity
+            distance_tooltip: Light distance
+            innerangle_tooltip: Inner angle
+            outerangle_tooltip: Outer angle
+            shadows:
+                title: Shadow
+                enabled: Enabled
+                fov_offset_tooltip: Shadow virtual camera FOV offset.
+                distance_tooltip: Shadow distance
+            flare_effect:
+                title: Flare effect
+                enabled: Enabled
+                size_offset_tooltip: Size offset
+                falloff_distance_tooltip: Falloff distance
+                start_angle_tooltip: Start angle
+                end_angle_tooltip: End angle
+                angle_factor_offset_tooltip: Angle factor offset
+                intensity_tooltip: Intensity
+            volumetric_fog_effect:
+                title: Volumetric fog effect
+                enabled: Enabled
+                scattering_albedo_tooltip: Scattering
+                density_tooltip: Density
+                anisotropy_tooltip: Anisotropy
+                samples_tooltip: Samples
+
+    texture:
+        title: Texture manager
+        subtitle: This GUI allows you to view and manage textures loaded by Minecraft during runtime
+        linear: Linear
+        linear_tooltip: When enabled, texture looks smooth
+        mipmap: Mipmap
+        mipmap_tooltip: When enabled, looks less noisy far away
+        replace: Replace
+        replace_modal: "Type in the resource location of {l}already loaded{r} texture which you want to replace with:"
+        export: Save texture
+        export_modal: "Selected texture was successfully selected as {7}%s{r}!"
+        export_error: "This texture couldn't be exported... Check the logs for the error message!"
+        open_folder: "Open export folder..."
+        copy: "Copy currently selected texture as a string (domain:path)"
+
+    gun:
+        title: Gun configuration
+        fire_props: Fire properties
+        projectile_props: Projectile properties
+        impact_props: Impact properties
+        transforms: Transformations
+        transforms_first_person: Transformations (1st person)
+        
+        default_morph: Default morph
+        fire_morph: Firing morph
+        fire_command: Command on fire
+        delay: Delay
+        projectiles: Projectiles
+        scatter: Scatter
+        scatter_x: Horizontal scatter
+        scatter_y: Vertical scatter
+        launch: Launch player
+        ammo_stack: This option allows to specify an item, which will be consumed upon shooting. If there are no items of this kind and its count, when shooting in survival mode, then the projectile won't be shot.\n\nThink of it as an ammo option.
+        
+        projectile_morph: Projectile morph
+        tick_command: Command on tick
+        ticking: Ticking
+        life_span: Life span
+        yaw: Yaw
+        pitch: Pitch
+        sequencer: Sequencer
+        random: Random
+        hitbox_x: Hitbox X
+        hitbox_y: Hitbox Y
+        speed: Speed
+        friction: Friction
+        gravity: Gravity
+        fade_in: Fade in
+        fade_out: Fade out
+
+        aim_options: Pro options
+        static_recoil: Static recoil
+        static_recoil_tooltip:
+            |
+                When enabled, the minimum X and Y recoil will be added to player's look direction every time.
+
+                Otherwise (when disabled) a number between minimum and maximum fields will be randomly generated and added to player's look direction.
+        recoil_x: Recoil X
+        recoil_y: Recoil Y
+        recoil_min: Minimum recoil factor
+        recoil_max: Maximum recoil factor
+
+        arm_pose: Shooting arm pose
+        arm_shooting_pose: Enable when shooting
+        arm_shooting_pose_tooltip: When enabled and shooting BB gun, character's arms will be held in a bow shooting pose
+        arm_shooting_pose_always: Keep the pose
+        arm_shooting_pose_always_tooltip: When enabled, arms will always be held in a bow shooting pose
+
+        shooting_offset: Shooting offset
+        shooting_offset_tooltip: XYZ values relative to head rotation that allow you to adjust where does the projectile will be shot from
+        shooting_offset_x: Shooting offset X
+        shooting_offset_y: Shooting offset Y
+        shooting_offset_z: Shooting offset Z
+
+        inventory_morph: Inventory morph
+        crosshair_morph: Crosshair morph
+        hands_morph: Hands morph
+        reload_morph: Reloading morph
+        overlay_morph: Zoom overlay morph
+
+        hide_crosshair_on_zoom: Hide on zoom
+        use_inventory_morph: Enable morph
+        hide_hands_on_zoom: Hide on zoom
+        use_zoom_overlay_morph: Enable morph
+
+        zoom_factor: Zoom factor
+        zoom_factor_tooltip: Arbitrary zoom factor, the higher the number, the closer it will be to {7}0{r} degrees FOV, {7}0.5{r} factor is about {7}50%%{r} of your current FOV
+        ammo: Ammo
+        ammo_tooltip: How many time can a gun get shot before needing a reloading (if reloading is enabled)
+        reloading: Reloading
+        use_reloading: Enable reloading
+        reloading_time_tooltip: How many ticks it takes to reload the gun
+        shooting: Shooting
+        shoot_when_held: Shoot when held
+        shot_delay_tooltip: Delay between shots during automatic firing (in ticks)
+
+        aim_options_second: Pro options (page 2)
+        destroyed_command: Command on gun destroyed
+        melee_command: Command on melee attack
+        reload_command: Command on reload
+        zoom_on_command: Command on zoom
+        zoom_off_command: Command on zoom off
+
+        melee_damage: Melee damage
+        mouse_zoom: Mouse intensity on zoom
+        durability: Durability
+        prevent_left_click: Prevent block breaking
+        prevent_right_click: Prevent interaction
+        prevent_entity_attack: Prevent entity attack
+
+        impact_morph: Impact morph
+        impact_delay: Impact delay
+        impact_command: Command on impact
+        impact_entity_command: Command on entity impact
+        vanish: Vanish
+        bounce: Bounce
+        sticks: Sticks
+        hits: Hits
+        damage: Damage
+        knockback_horizontal: Horizontal knockback factor, 0 is no knockback, the higher the value the further entity will be knocked
+        knockback_vertical: Vertical knockback factor, 0 is no vertical knockback, the higher the value the higher entity will be knocked. This option doesn't work if horizontal knockback is 0
+        bounce_factor: Factor
+        vanish_command: Command on vanish
+        vanish_delay: Vanish delay
+        penetration: Penetration factor - how much into the block the projectile will penetrate into (this option works only when Sticks enabled)
+        collision: Collision
+        ignore_blocks: Ignore blocks
+        ignore_blocks_tooltip: This option makes projectiles go through blocks instead of bouncing, sliding or sticking
+        ignore_entities: Ignore entities
+        ignore_entities_tooltip: This option makes projectiles go through entities instead of causing damage, knockback or executing on entity impact command
+
+        gun_transforms: Gun transformations
+        projectile_transforms: Projectile transformations
+
+        category:
+            motion: Motion
+            hitbox: Hitbox
+            timers: Timers
+            rotation: Rotation
+            transition: Transition
+
+        keys:
+            cycle: Cycle between panels
+
+    immersive_editor:
+        hide_outer_panel: Press F1 to hide the outer screen
+
+        keys:
+            category: Immersive editor
+            toggle_outer_panel: Toggle outer screen
+
+    interpolations:
+        linear: Linear
+        quad_in: Quadratic In
+        quad_out: Quadratic Out
+        quad_inout: Quadratic In/out
+        cubic_in: Cubic In
+        cubic_out: Cubic Out
+        cubic_inout: Cubic In/out
+        exp_in: Exponential In
+        exp_out: Exponential Out
+        exp_inout: Exponential In/out
+
+    aperture:
+        config:
+            title: Scene
+
+            detach: Detach scene
+            reload: Reload actors
+            actions: Preview actions
+            stop_scene: Stop scene after close
+            reload_scene: Reload scene
+
+        keys:
+            category: Player recording editor
+            toggle_list: Toggle player recording list
+            toggle_editor: Toggle player recording editor
+            detach_scene: Detach current scene
+            reload_scene: Reload current scene
+
+            add_morph_action: Add morph action
+        
+        modifiers:
+            tracker: Tracker
+            tracker_description: Attaches the camera to a tracker morph of type "Aperture Modifier" in current scene
+
+            panels:
+                tracker_tooltip: Enter the name of the tracker morph (type must be "Aperture Modifier")
+                main_cam: As the main camera
+                main_cam_tooltip: When this option is turned on, all camera transformations prior to this modifier will be recalculated in this tracker space; otherwise, the modifier will only modify the coordinate data
+                look_at: Look at
+                look_at_tooltip: Look at the tracker modifier. This will disable the {gui.aperture.modifiers.panels.main_cam} option.

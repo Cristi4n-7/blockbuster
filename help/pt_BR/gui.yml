@@ -360,22 +360,22 @@ blockbuster.gui:
             fixed: Fixar movimento
 
     image:
-        crop: Crop
-        left: Left
-        right: Right
-        top: Top
-        bottom: Bottom
-        resize_crop: Resize crop
-        dimensions: "Size (%spx, %spx)"
-        offset_x: X coordinate shift
-        offset_y: Y coordinate shift
-        rotation: Coordinate rotation
-        keying: Keying
-        keying_tooltip: This option clears the color data on the screen (in framebuffer) where this morph was rendered, which can be used for Minema's 'Use alpha' option to record keyed footage without external video editing plugins
-        shadow: Shadow
-        shadow_tooltip: Whether this image morph should cast shadow with Optifine's shaders (this can fix image morph shading itself when too big), without Optifine it's useless
-        remove_parent_space_effects: Remove parent space
-        remove_parent_space_effects_tooltip: Remove the rotation and scale of the parent space on this image. If deactivated, it could result in weird deformations together with "Look at player" option.
+        crop: Cortar
+        left: Esquerda
+        right: Direita
+        top: Topo
+        bottom: Fundo
+        resize_crop: Redimensionar corte
+        dimensions: "Tamanho (%spx, %spx)"
+        offset_x: X mudança de coordenadas
+        offset_y: Y mudança de coordenadas
+        rotation: Rotação da coordenada
+        keying: Codificação
+        keying_tooltip: Essa opção limpa os dados de cores na tela (no framebuffer) onde essa transformação foi renderizada, o que pode ser usado para a opção 'Usar alfa' do Minema para gravar imagens codificadas sem plug-ins externos de edição de vídeo
+        shadow: Sombra
+        shadow_tooltip: Se esse morph de imagem deve projetar sombra com os shaders do Optifine (isso pode corrigir o sombreamento do morph da imagem quando muito grande), sem o Optifine é inútil
+        remove_parent_space_effects: Remover espaço
+        remove_parent_space_effects_tooltip: Remove a rotação e a escala do espaço nessa imagem. Se desativado, pode resultar em deformações estranhas junto com a opção "Olhar para o jogador".
 
     sequencer:
         duration: Duração
@@ -725,48 +725,48 @@ blockbuster.gui:
 
     betterlights_morph:
         name: BetterLights
-        sponsored_title: Sponsored by...
-        sponsored_tooltip: "Made possible by donations. Thank you!"
-        enable_always: Enable always
-        enable_always_tooltip: Enable the morph even when the blockbuster configuration {config.better_lights.enable_better_lights} is disabled.
-        not_installed_message: You need the BetterLights mod for this morph to work.
-        mod_page_button: Open mod page
+        sponsored_title: Patricionado por...
+        sponsored_tooltip: "Apenas possível por meio das doações. Obrigado!"
+        enable_always: Sempre habilitado
+        enable_always_tooltip: Habilita o morph mesmo quando a configuração do blockbuster {config.better_lights.enable_better_lights} estiver desabilitada.
+        not_installed_message: Você precisa do mod BetterLights para que esse morph funcione.
+        mod_page_button: Abrir página do mod
         #the option keys are derived from the config property names of BetterLights, where spaces are replaced with underscores.
         #if it's a tooltip, the string "_tooltip" will be attached to the end.
         #sub categories always have a title
         #all language keys are converted to lowercase
         options:
-            enabled: Enabled
+            enabled: Habilitado
             direction: Direction
             directionx_tooltip: X
             directiony_tooltip: Y
             directionz_tooltip: Z
-            color: Light color
-            intensity_tooltip: Light intensity
-            distance_tooltip: Light distance
-            innerangle_tooltip: Inner angle
-            outerangle_tooltip: Outer angle
+            color: Cor da luz
+            intensity_tooltip: Intensidade da luz
+            distance_tooltip: Distância da luz
+            innerangle_tooltip: Ângulo interno
+            outerangle_tooltip: Ângulo externo
             shadows:
-                title: Shadow
-                enabled: Enabled
+                title: Sombra
+                enabled: Habilitado
                 fov_offset_tooltip: Shadow virtual camera FOV offset.
                 distance_tooltip: Shadow distance
             flare_effect:
-                title: Flare effect
-                enabled: Enabled
-                size_offset_tooltip: Size offset
-                falloff_distance_tooltip: Falloff distance
-                start_angle_tooltip: Start angle
-                end_angle_tooltip: End angle
-                angle_factor_offset_tooltip: Angle factor offset
-                intensity_tooltip: Intensity
+                title: Efeito de reflexo
+                enabled: Habilitado
+                size_offset_tooltip: Deslocamento de tamanho
+                falloff_distance_tooltip: Distância de queda
+                start_angle_tooltip: Iniciar ângulo
+                end_angle_tooltip: Terminar ângulo
+                angle_factor_offset_tooltip: Deslocamento do fator do ângulo
+                intensity_tooltip: Intensidade
             volumetric_fog_effect:
-                title: Volumetric fog effect
-                enabled: Enabled
-                scattering_albedo_tooltip: Scattering
-                density_tooltip: Density
-                anisotropy_tooltip: Anisotropy
-                samples_tooltip: Samples
+                title: Efeito de névoa volumétrica
+                enabled: Habilitado
+                scattering_albedo_tooltip: Espalhamento
+                density_tooltip: Densidade
+                anisotropy_tooltip: Anisotropia
+                samples_tooltip: Amostras
 
     texture:
         title: Texture manager

@@ -109,15 +109,15 @@ blockbuster.gui:
         rename_prefix_popup: "Introduzir novo prefixo:"
 
         rotation_filter:
-            title: Rotation filter
-            head_yaw: Head yaw
-            head_pitch: Head pitch
-            body_yaw: Body yaw
-            channel_tooltip: The rotation channel that should be filtered.
-            to_tooltip: To tick
-            from_tooltip: From tick
-            execute: Execute
-            success: Success
+            title: Filtro de rotação
+            head_yaw: Cabeça virada
+            head_pitch: Inclinação da cabeça
+            body_yaw: Cabeça virada
+            channel_tooltip: O canal de rotação deverá ser filtrado.
+            to_tooltip: Para tick
+            from_tooltip: Do tick
+            execute: Executar
+            success: Sucesso
             frame_chunk_error: Frames overwrite error. The received frames chunk cannot be inserted properly.
             exception: Failure, an exception happened during executing the rotation filter.
             record_save_error: An error happened while saving the record on the server.
@@ -126,109 +126,109 @@ blockbuster.gui:
             empty_filtered_frames: The list of filtered frames is empty.
 
 
-        attach: Attach
-        attach_tooltip: Attach this scene to currently held playback button.\n\nAlternatively, you can also attach a playback button by holding it, and right clicking it while sneaking.
+        attach: Anexar
+        attach_tooltip: Anexe essa cena ao botão de reprodução atualmente pressionado.\n\nComo alternativa, você também pode anexar um botão de reprodução segurando-o e clicando com o botão direito enquanto se esgueira.
 
-        camera: Edit camera
-        tp: Teleport
-        tp_tooltip: Teleport yourself to the replay's starting position
+        camera: Editar câmera
+        tp: Teleportar
+        tp_tooltip: Teleportar você mesmo para posição inicial do replay
 
-        none: "(none)"
+        none: "(nenhum)"
 
         keys:
-            category: Scenes
+            category: Cenas
 
-            toggle_list: Toggle scenes list
-            toggle_options: Toggle general options
+            toggle_list: Alternar lista de cenas
+            toggle_options: Alternar opções gerais
 
     scenes:
         title: Scenes
 
-        add_scene: "Add a scene..."
-        dupe_scene: "Duplicate selected scene..."
-        rename_scene: "Rename selected scene..."
-        remove_scene: "Remove selected scene..."
+        add_scene: "Adicionar á cena..."
+        dupe_scene: "Duplicar cena selecionada..."
+        rename_scene: "Renomear cena selecionada..."
+        remove_scene: "Remover cena selecionada..."
 
-        add_modal: "Enter a name for a new scene:"
-        dupe_modal: "Enter a name for duplicated scene:"
-        dupe_recordings: "Copy recordings"
+        add_modal: "Introduza um nome para a nova cena:"
+        dupe_modal: "Introduza um nome para a cena duplicada:"
+        dupe_recordings: "Copiar gravações"
         dupe_recordings_tooltip: "When enabled, player recordings will be duplicated to files with new names"
-        rename_modal: "Enter a new name for current scene:"
-        remove_modal: "Are you sure you want to remove this scene?"
+        rename_modal: "Introduza um novo nome para a cena atual:"
+        remove_modal: "Você tem certeza que deseja remover essa cena?"
     
     # Actor configuration GUI strings
     actor:
-        title: Actor Configuration
+        title: Configuração do ator
         
-        default: Default
-        name: Name
-        filename: Recording ID
-        invincible: Can be killed?
-        invisible: Is visible?
-        attached: Attached to actor
-        yaw: Yaw 
-        pitch: Pitch 
+        default: Padrão
+        name: Nome
+        filename: ID Gravação
+        invincible: Pode ser morto
+        invisible: é vísivel?
+        attached: Anexado ao ator
+        yaw: Virado
+        pitch: Tom
     
     # Model block GUI strings
     model_block:
-        title: Model blocks
-        not_selected: Select a model block...
+        title: Blocos de modelo
+        not_selected: Selecionar o bloco de modelo...
         
         x: X
         "y": "Y"
         z: Z
-        yaw: Yaw
-        pitch: Pitch
-        body: Body yaw
-        one: One
-        one_tooltip: Uniform one slider scale
-        shadow: Shadow
+        yaw: Virado
+        pitch: Tom
+        body: Corpo virado
+        one: Um
+        one_tooltip: Escala uniforme de um controle deslizante
+        shadow: Sombra
         global: Global
         global_tooltip: Enables surpassing of chunk culling
-        enabled: Enabled
+        enabled: Habilitado
         enabled_tooltip: Enables model block rendering
-        render_last: Render last
+        render_last: Renderizar último
         render_last_tooltip: Makes a model block to be rendered last. Use this on semi transparent model blocks. This should fix in most of the cases model blocks not being rendered behind semi transparent model blocks.
-        render_always: Render always
+        render_always: Renderizar sempre
         render_always_tooltip: Render the model block even when the Blockbuster config {config.model_block.model_block_disable_rendering} option is enabled.
-        exlude_reset_playback: Prevent reset
+        exlude_reset_playback: Prevenir redefinição
         exlude_reset_playback_tooltip: Prevent reset when scene playbacks and Blockbuster model block {config.model_block.reset_on_playback} configuration is enabled.
-        enable_hitbox: Enable hitbox
+        enable_hitbox: Ativar hitbox
         enable_hitbox_tooltip: Enable the hitbox of the block. It is the standard Minecraft block hitbox.
 
-        light_level: Light value
-        light_level_tooltip: Emits light with the given level, Minecraft's maximum light value is 15.
-        look: Rotate at you
+        light_level: Valor da luz
+        light_level_tooltip: Emite luz com o nível determinado, o valor máximo de luz do Minecraft é 15.
+        look: Rotacionar para você
         
-        entity: Entity
-        translate: Translate
-        rotate: Rotate
-        scale: Scale
+        entity: Entidade
+        translate: Mover
+        rotate: Rotacionar
+        scale: Escalar
     
     # Player recording editor GUI strings
     record_editor:
-        title: Recordings
-        directors: Scene's records
+        title: Gravações
+        directors: Gravações das cenas
         not_selected: Select a player recording...
-        action: action
+        action: ações
 
-        cut: Cut actions
-        copy: Copy actions
-        paste: Paste actions
-        capture: Record from cursor
-        teleport: Teleport at cursor
+        cut: Cortar ações
+        copy: Copiar ações
+        paste: Colar ações
+        capture: Gravar apartir do cursor
+        teleport: Teleportar para o cursor
 
-        deselect: Deselect actions
-        select_all: Select all actions
+        deselect: Deselecionar ações
+        select_all: Selecionar todas as ações
 
 
-        drop: Drop block
-        damage: Damage
-        progress: Progress
-        mounting: Mounting
-        meta: Meta value
-        arrow_charge: Arrow charge
-        no_fields: This action doesn't have any editable fields...
+        drop: Largar bloco
+        damage: Dano
+        progress: Progresso
+        mounting: Montar
+        meta: Valor meta
+        arrow_charge: Carga de flecha
+        no_fields: Essa ação não possui campos editáveis...
         
         actions:
             chat: 
@@ -314,50 +314,50 @@ blockbuster.gui:
 
     # Playback GUI
     playback:
-        title: Playback configuration
-        camera_mode: Camera mode
-        profile: Profile filename
-        scene: Scene
+        title: Configuração da reprodução
+        camera_mode: Modo da câmara
+        profile: Nome do perfil
+        scene: Cena
 
-        nothing: Do nothing
-        play: Play only
-        load_profile: Load and play
+        nothing: Fazer nada
+        play: Iniciar apenas
+        load_profile: Carregar e iniciar
 
     builder:
-        pose_editor: Pose editor
-        body_part: Body part
-        materials: Materials
+        pose_editor: Editor de pose
+        body_part: Parte do corpo
+        materials: Materiais
         nbt: NBT
 
-        pick_model: Pick model
-        pick_skin: Pick skin
-        pose_sneak: Sneaking pose
+        pick_model: Selecionar modelo
+        pick_skin: Selecionar skin
+        pose_sneak: Agachado
         pose: Pose
         
-        obj_materials: OBJ materials
-        pick_texture: Pick texture
+        obj_materials: Materiais OBJ
+        pick_texture: Selecionar textura
         
-        limbs: Limbs
-        body_parts: Body parts
-        use_target: Use target
+        limbs: Membros
+        body_parts: Partes do corpo
+        use_target: Usar trajeto
 
-        shape_keys: Shape keys
-        shape_keys_factor: Shape keys factor
+        shape_keys: Chave de forma
+        shape_keys_factor: Fator da chave de forma
         shape_keys_factor_tooltip: This field determines the factor of how much a shape key will be applied (0 = no effect, 1 = full deform)
-        relative: Relative
+        relative: Relativo
         relative_tooltip: This option allows to apply the transformations relatively on top of the current one
 
         context:
-            add: Add a shape key...
-            add_to: "Add \"%s\" shape key"
-            remove: Remove this shape key
-            children: Apply to children
+            add: Adicionar chave de forma...
+            add_to: "Adicionar \"%s1\" chave de forma"
+            remove: Remover essa chave de forma
+            children: Aplicar forma
         
         limb:
-            absolute_brighness: Absolute Brightness
-            glow: Limb Glow
-            color: Limb Color
-            fixed: Fixate movement
+            absolute_brighness: Brilho absoluto
+            glow: Brilho do membro
+            color: Cor do membro
+            fixed: Fixar movimento
 
     image:
         crop: Crop
@@ -378,63 +378,63 @@ blockbuster.gui:
         remove_parent_space_effects_tooltip: Remove the rotation and scale of the parent space on this image. If deactivated, it could result in weird deformations together with "Look at player" option.
 
     sequencer:
-        duration: Duration
-        random: Random
-        set_duration: Set duration
+        duration: Duração
+        random: Aleatório
+        set_duration: Definir duração
         set_duration_tooltip: "When enabled, this option will take the calculated duration and assign it to picked morph that supports \"animates\" property, the actual duration will be set to \"1\""
-        reverse: Reverse
-        no_morph: (no morph)
+        reverse: Invertido
+        no_morph: (sem morph)
         morphs: Morphs
-        random_order: Random order
-        truly_random_order: Truly random
-        keep_progress: Keep progress
+        random_order: Ordem aleatória
+        truly_random_order: Verdadeiramente aleatório
+        keep_progress: Manter o progresso
         ticks: ticks
-        add_part_tooltip: Add a morph to the list. If you hold down the Ctrl key, it will be the next morph, otherwise it will be the last one.
+        add_part_tooltip: Adiciona um morph à lista. Se você mantiver pressionada a tecla Ctrl, será o próximo morph, caso contrário, será a última.
         loop: Loop
-        loop_tooltip: Set loop counts, 0 for endless loop.
-        loop_offset: Loop offset
-        loop_offset_count: Offset count
-        end_point: End point
-        end_point_tooltip: Set the end point of this sequencer morph, if random is enabled, it also be used to count loops.
+        loop_tooltip: Defina contagens de loop, 0 para loop infinito.
+        loop_offset: Deslocamento do loop
+        loop_offset_count: Contagem do deslocamento
+        end_point: Ponto final
+        end_point_tooltip: Defina o ponto final deste morph da sequência, se aleatório estiver habilitado, ele também será usado para contar loops.
 
         preview_tick: Preview tick of this sequencer morph
 
-        generate_morph: Generate morph
+        generate_morph: Gerar morph
         generate_morph_tooltip: Generate a morph from current preview
 
         keys:
-            toggle: Toggle sequencer playback
-            stop: Stop sequencer playback
+            toggle: Alternar reprodução da sequência
+            stop: Parar a reprodução da sequência
 
     particle:
-        tooltip: General properties
-        emission: Emission properties
-        morph: Morph properties
-        vanilla: Vanilla properties
-        common: Common properties
+        tooltip: Propriadades gerais
+        emission: Propriadades de emissão
+        morph: Porpriadades do morph
+        vanilla: Propriadades do vanilla
+        common: Propriedades comuns
 
-        type: Particle type
+        type: Tipo de partícula
         types:
             vanilla: Vanilla
             morph: Morph
 
-        pick_type: Pick type
-        pick_type_tooltip: Pick morph movement type
+        pick_type: Escolha o tipo
+        pick_type_tooltip: Escolha o tipo de movimento de metamorfose
 
-        particle: Pick particle
-        frequency: Frequency
-        dx: Offset X
-        dy: Offset Y
-        dz: Offset Z
-        speed: Speed
-        count: Count
-        local_rotation: Local rotation
-        local_rotation_tooltip: When attached to body parts, vanilla particles will be emitted relative to body part's rotation, otherwise they'll emitted relative to the world
-        args: Additional arguments
+        particle: Selecionar partícula
+        frequency: Frequência
+        dx: Desvio X
+        dy: Desvio Y
+        dz: Desvio Z
+        speed: Velocidade
+        count: Contar
+        local_rotation: Rotação local
+        local_rotation_tooltip: Quando fixadas em partes do corpo, as partículas do vanilla serão emitidas em relação à rotação da parte do corpo, caso contrário, serão emitidas em relação ao mundo.
+        args: Argumentos adicionais
 
-        fade: Fade
-        maximum: Maximum
-        cap: Capacity
+        fade: Desaparecer
+        maximum: Máximo
+        cap: Capacidade
 
     snowstorm:
         variables: Variables
@@ -455,27 +455,27 @@ blockbuster.gui:
         folder_tooltip: Open folder with particle effects
 
         keys:
-            category: Particle editor
-            save: Save current particle effect
+            category: Editor de partícula
+            save: Salvar o efeito de partícula atual
 
         general:
-            title: General
-            pick: Pick texture
+            title: Geral
+            pick: Selecionar textura
 
-            play_playing: Playing
-            play_paused: Paused
+            play_playing: Reproduzindo
+            play_paused: Pausado
 
             identifier: Identifier of this particle effect, this can be used as a display name, but in Bedrock edition it's an ID of the particle effect
 
-            particles_opaque: Opaque
-            particles_alpha: Alpha
-            particles_blend: Blend
-            particles_additive: Additive
+            particles_opaque: Opaco
+            particles_alpha: Alfa
+            particles_blend: Mistura
+            particles_additive: Aditivo
 
         particle_morph:
             title: Morph
-            enabled: Enabled
-            render_texture: Still render billboard
+            enabled: Habilitado
+            render_texture: Ainda renderizar o billboard
 
         space:
             title: Particle space
@@ -698,30 +698,30 @@ blockbuster.gui:
                 title: Color and lighting on collision
 
     record_morph:
-        random_skip: Random Skip
+        random_skip: Pular aleatoriamente
 
     structure_morph:
-        lighting: Lighting
-        anchor: Anchor point
+        lighting: Luminosidade
+        anchor: Ponto âncora
 
     tracker_morph:
-        name: Tracker
+        name: Rastreador
         label:
-            title: Name
+            title: Nome
         type:
-            title: Type
-            aperture_tracker: Morph tracking
-            apcam: Aperture Modifier
-        hidden: Hide pointer
+            title: Tipo
+            aperture_tracker: Rastreamento de morph
+            apcam: Modificador do aperture
+        hidden: Ocultar ponteiro
 
         aperture_tracker:
-            combine_tracking: Automatic append
-            combine_tracking_tooltip: (for Aperture tracking) If the tracker's name already was tracked, it will check if this tracker starts at the next frame where the original tracker has stopped. If it is continuing at the next frame, it then appends this tracking data to the original one.
+            combine_tracking: Anexação automática
+            combine_tracking_tooltip: (para rastreamento do aperture) Se o nome do rastreador já foi rastreado, ele verificará se o rastreador começa no próximo quadro onde o rastreador original parou. Se continuar no próximo quadro, ele anexa esses dados de rastreamento ao original.
 
     light_morph:
-        name: Light
-        light_value: Light value
-        light_value_tooltip: You need to have Optifine installed and dynamic lights set to fancy for this to work. This slider allows to choose the strength of the light.
+        name: Luz
+        light_value: Valor da luz
+        light_value_tooltip: Você precisa ter o Optifine instalado e as luzes dinâmicas configuradas adequadamente para que isso funcione. Esse controle deslizante permite escolher a intensidade da luz.
 
     betterlights_morph:
         name: BetterLights
@@ -913,11 +913,11 @@ blockbuster.gui:
             cycle: Cycle between panels
 
     immersive_editor:
-        hide_outer_panel: Press F1 to hide the outer screen
+        hide_outer_panel: Pressione F1 para ocultar a tela externa
 
         keys:
-            category: Immersive editor
-            toggle_outer_panel: Toggle outer screen
+            category: Editor imersivo
+            toggle_outer_panel: Alternar tela externa
 
     interpolations:
         linear: Linear
@@ -933,30 +933,30 @@ blockbuster.gui:
 
     aperture:
         config:
-            title: Scene
+            title: Cena
 
-            detach: Detach scene
-            reload: Reload actors
-            actions: Preview actions
-            stop_scene: Stop scene after close
-            reload_scene: Reload scene
+            detach: Desanexar cena
+            reload: Recarregar atores
+            actions: Prévisualizar aºões
+            stop_scene: Parar cena após fechar
+            reload_scene: Recarregar cena
 
         keys:
-            category: Player recording editor
-            toggle_list: Toggle player recording list
-            toggle_editor: Toggle player recording editor
-            detach_scene: Detach current scene
-            reload_scene: Reload current scene
+            category: Editor de gravação do player
+            toggle_list: Alternar lista de gravação do player
+            toggle_editor: Alternar editor de gravação do player
+            detach_scene: Desanexar cena atual
+            reload_scene: Recarregar cena atual
 
             add_morph_action: Add morph action
         
         modifiers:
-            tracker: Tracker
-            tracker_description: Attaches the camera to a tracker morph of type "Aperture Modifier" in current scene
+            tracker: Rastreador
+            tracker_description: Anexa a câmera a uma morph do rastreador do tipo "Modificador do aperture" na cena atual
 
             panels:
-                tracker_tooltip: Enter the name of the tracker morph (type must be "Aperture Modifier")
-                main_cam: As the main camera
-                main_cam_tooltip: When this option is turned on, all camera transformations prior to this modifier will be recalculated in this tracker space; otherwise, the modifier will only modify the coordinate data
-                look_at: Look at
-                look_at_tooltip: Look at the tracker modifier. This will disable the {gui.aperture.modifiers.panels.main_cam} option.
+                tracker_tooltip: Digite o nome do rastreador de morph(o tipo deve ser "Modificador do aperture")
+                main_cam: Como a câmera principal
+                main_cam_tooltip: Quando essa opção estiver ativada, todas as transformações da câmera anteriores a este modificador serão recalculadas neste espaço do rastreador; caso contrário, o modificador modificará apenas os dados de coordenadas
+                look_at: Olhar para
+                look_at_tooltip: Olhar para o modificador do rastreador. Isso desabilitará a opção {gui.aperture.modifiers.panels.main_cam}.

@@ -784,74 +784,74 @@ blockbuster.gui:
         copy: "Copy currently selected texture as a string (domain:path)"
 
     gun:
-        title: Gun configuration
-        fire_props: Fire properties
-        projectile_props: Projectile properties
-        impact_props: Impact properties
-        transforms: Transformations
-        transforms_first_person: Transformations (1st person)
+        title: Configuração da pistola
+        fire_props: Propriadades ao disparar
+        projectile_props: Propriadades do projétil
+        impact_props: Propridades do impacto
+        transforms: Transformações
+        transforms_first_person: Transformações (1st pessoa)
         
-        default_morph: Default morph
-        fire_morph: Firing morph
-        fire_command: Command on fire
-        delay: Delay
-        projectiles: Projectiles
-        scatter: Scatter
-        scatter_x: Horizontal scatter
-        scatter_y: Vertical scatter
-        launch: Launch player
-        ammo_stack: This option allows to specify an item, which will be consumed upon shooting. If there are no items of this kind and its count, when shooting in survival mode, then the projectile won't be shot.\n\nThink of it as an ammo option.
+        default_morph: Morph padrão
+        fire_morph: Morph ao disparar
+        fire_command: Comando ao disparar
+        delay: Atraso
+        projectiles: Projéteis
+        scatter: Dispersão
+        scatter_x: Dispersão Horizontal
+        scatter_y: Dispersão Vertical
+        launch: Lançar jogador
+        ammo_stack: Essa opção permite especificar um item que será consumido ao disparar. Se não houver itens desse tipo e sua contagem, ao atirar no modo de sobrevivência, o projétil não será disparado.\n\nPense nisso como uma opção de munição.
         
-        projectile_morph: Projectile morph
-        tick_command: Command on tick
+        projectile_morph: Morph do projétil
+        tick_command: Comando no tick
         ticking: Ticking
-        life_span: Life span
-        yaw: Yaw
-        pitch: Pitch
-        sequencer: Sequencer
-        random: Random
+        life_span: Vida útil
+        yaw: Virado
+        pitch: Tom
+        sequencer: Sequência
+        random: Randomização
         hitbox_x: Hitbox X
         hitbox_y: Hitbox Y
-        speed: Speed
-        friction: Friction
-        gravity: Gravity
-        fade_in: Fade in
-        fade_out: Fade out
+        speed: Velocidade
+        friction: Fricção
+        gravity: Gravidade
+        fade_in: Aparecimento
+        fade_out: Desaparecer
 
-        aim_options: Pro options
-        static_recoil: Static recoil
+        aim_options: Opções pro
+        static_recoil: Recuo estático
         static_recoil_tooltip:
             |
-                When enabled, the minimum X and Y recoil will be added to player's look direction every time.
+            Quando ativado, o recuo mínimo X e Y será sempre adicionado à direção do olhar do jogador.
 
-                Otherwise (when disabled) a number between minimum and maximum fields will be randomly generated and added to player's look direction.
-        recoil_x: Recoil X
-        recoil_y: Recoil Y
-        recoil_min: Minimum recoil factor
-        recoil_max: Maximum recoil factor
+                Caso contrário (quando desabilitado) um número entre os campos mínimo e máximo será gerado aleatoriamente e adicionado à direção do olhar do jogador.
+        recoil_x: Recuo X
+        recoil_y: Recuo Y
+        recoil_min: Fator mínimo de recuo
+        recoil_max: Fator máximo de recuo
 
-        arm_pose: Shooting arm pose
-        arm_shooting_pose: Enable when shooting
-        arm_shooting_pose_tooltip: When enabled and shooting BB gun, character's arms will be held in a bow shooting pose
-        arm_shooting_pose_always: Keep the pose
-        arm_shooting_pose_always_tooltip: When enabled, arms will always be held in a bow shooting pose
+        arm_pose: Pose do braço ao atirar
+        arm_shooting_pose: Habilitar ao disparar
+        arm_shooting_pose_tooltip: Quando ativado e ao disparar a pistola BB, os braços do personagem serão mantidos em uma pose de disparar
+        arm_shooting_pose_always: Manter pose
+        arm_shooting_pose_always_tooltip: Quando ativado, os braços serão sempre mantidos em uma pose de disparar
 
-        shooting_offset: Shooting offset
-        shooting_offset_tooltip: XYZ values relative to head rotation that allow you to adjust where does the projectile will be shot from
-        shooting_offset_x: Shooting offset X
-        shooting_offset_y: Shooting offset Y
-        shooting_offset_z: Shooting offset Z
+        shooting_offset: Deslocamento ao disparar
+        shooting_offset_tooltip: Valores XYZ relativos à rotação da cabeça que permitem ajustar de onde o projétil será disparado
+        shooting_offset_x: Deslocamento ao disparar X
+        shooting_offset_y: Deslocamento ao disparar Y
+        shooting_offset_z: Deslocamento ao disparar Z
 
-        inventory_morph: Inventory morph
-        crosshair_morph: Crosshair morph
-        hands_morph: Hands morph
-        reload_morph: Reloading morph
-        overlay_morph: Zoom overlay morph
+        inventory_morph: Morph do inventário
+        crosshair_morph: Morph da mira
+        hands_morph: Morph das mãos
+        reload_morph: Morph ao recarregar
+        overlay_morph: Morph da sobreposição de zoom
 
-        hide_crosshair_on_zoom: Hide on zoom
-        use_inventory_morph: Enable morph
-        hide_hands_on_zoom: Hide on zoom
-        use_zoom_overlay_morph: Enable morph
+        hide_crosshair_on_zoom: Esconder no zoom
+        use_inventory_morph: Habilitar morph
+        hide_hands_on_zoom: Esconder no zoom
+        use_zoom_overlay_morph: Habilitar morph
 
         zoom_factor: Zoom factor
         zoom_factor_tooltip: Arbitrary zoom factor, the higher the number, the closer it will be to {7}0{r} degrees FOV, {7}0.5{r} factor is about {7}50%%{r} of your current FOV
@@ -899,8 +899,8 @@ blockbuster.gui:
         ignore_entities: Ignore entities
         ignore_entities_tooltip: This option makes projectiles go through entities instead of causing damage, knockback or executing on entity impact command
 
-        gun_transforms: Gun transformations
-        projectile_transforms: Projectile transformations
+        gun_transforms: Transformações da pistola
+        projectile_transforms: Transformações do projétil
 
         category:
             motion: Motion

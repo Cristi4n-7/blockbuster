@@ -34,7 +34,7 @@ blockbuster.gui:
         create: Criar pose
 
         keys:
-            toggle_gui_model: Alternar renderização de modelo dentro do editor
+            toggle_gui_model: Alternar renderização do modelo dentro do editor
     
     dashboard: 
         main: Painel
@@ -769,19 +769,19 @@ blockbuster.gui:
                 samples_tooltip: Amostras
 
     texture:
-        title: Texture manager
-        subtitle: This GUI allows you to view and manage textures loaded by Minecraft during runtime
+        title: Gerenciador de texturas
+        subtitle: Esta GUI permite visualizar e gerenciar as texturas carregadas pelo Minecraft durante o tempo que foi executado
         linear: Linear
-        linear_tooltip: When enabled, texture looks smooth
+        linear_tooltip: Quando ativado, a textura parece suave
         mipmap: Mipmap
-        mipmap_tooltip: When enabled, looks less noisy far away
-        replace: Replace
+        mipmap_tooltip: Quando ativado, parece menos pixelada à distância
+        replace: Substituir
         replace_modal: "Type in the resource location of {l}already loaded{r} texture which you want to replace with:"
-        export: Save texture
-        export_modal: "Selected texture was successfully selected as {7}%s{r}!"
-        export_error: "This texture couldn't be exported... Check the logs for the error message!"
-        open_folder: "Open export folder..."
-        copy: "Copy currently selected texture as a string (domain:path)"
+        export: Salvar textura
+        export_modal: "A textura selecionada foi selecionada com sucesso como {7}%s{r}!"
+        export_error: "Esta textura não pôde ser exportada... Verifique a mensagem de erro nos logs!"
+        open_folder: "Abrir pasta de exportação..."
+        copy: "Copiar a textura atualmente selecionada como uma string (domínio:caminho)"
 
     gun:
         title: Configuração da pistola

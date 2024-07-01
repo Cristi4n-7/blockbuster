@@ -10,8 +10,9 @@ import mchorse.blockbuster.Blockbuster;
 import mchorse.blockbuster.client.RenderingHandler;
 import mchorse.blockbuster.client.render.tileentity.TileEntityGunItemStackRenderer;
 import mchorse.blockbuster.client.render.tileentity.TileEntityModelItemStackRenderer;
-import mchorse.blockbuster.common.entity.BetterLightsDummyEntity;
-import mchorse.blockbuster.common.entity.ExpirableDummyEntity;
+import mchorse.blockbuster.events.TickHandler;
+import mchorse.blockbuster.utils.ExpirableRunnable;
+import mchorse.blockbuster_pack.trackers.ApertureCamera;
 import mchorse.mclib.client.gui.framework.elements.GuiModelRenderer;
 import mchorse.mclib.client.render.VertexBuilder;
 import mchorse.mclib.config.values.*;
@@ -31,9 +32,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Optional;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.joml.Matrix3d;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nullable;
@@ -47,7 +51,7 @@ import java.util.function.Consumer;
 import static dz.betterlights.utils.ConfigProperty.EnumPropertyType.COLOR_PICKER;
 
 public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAnimationProvider, ISyncableMorph, IMorphGenerator {
-    private ExpirableDummyEntity dummy;
+    private BetterLightsRunnable dummy;
     /**
      * Cast this to LightCaster
      * Type is Object as the BetterLights dependency is optional.
@@ -65,7 +69,8 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
     private boolean renderedItemGui = false;
     private boolean enableAlways = false;
     /**
-     * Animation and stuff - is set to the lightcaster
+     * The values influenced by animation and other dynamic stuff.
+     * These are the final values that are set to the {@link #lightCaster}
      */
     private final BetterLightsProperties properties = new BetterLightsProperties();
     private BetterLightsAnimation animation = new BetterLightsAnimation();
@@ -160,7 +165,7 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
     @Optional.Method(modid = BetterLightsConstants.ID)
     protected void createDummyEntitiy(@Nullable EntityLivingBase target)
     {
-        if ((this.dummy == null || this.dummy.isDead) && this.isMorphEnabled())
+        if ((this.dummy == null || this.dummy.shouldRemove()) && this.isMorphEnabled())
         {
             /*
              * if the rendered position is 0, it is likely that the morph has not been rendered yet
@@ -173,9 +178,8 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
                 this.prevPosition.set(target.posX, target.posY, target.posZ);
             }
 
-            this.dummy = new BetterLightsDummyEntity(Minecraft.getMinecraft().world, this.getLightcaster(), 0);
+            this.dummy = new BetterLightsRunnable(Minecraft.getMinecraft().world, this.getLightcaster(), 0);
 
-            this.updateDummyEntityPosition();
             this.updateLightcaster();
             this.addToWorld();
         }
@@ -185,20 +189,8 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
     @SideOnly(Side.CLIENT)
     @Optional.Method(modid = BetterLightsConstants.ID)
     protected void addToWorld() {
-        Minecraft.getMinecraft().world.addEntityToWorld(this.dummy.getEntityId(), this.dummy);
+        Blockbuster.proxy.tickHandler.addRunnable(TickHandler.WorldClientTickEvent.class, Side.CLIENT, TickEvent.Phase.START, this.dummy);
         BetterLightsMod.getLightManager().addTemporaryLightCaster(Minecraft.getMinecraft().world, this.getLightcaster(), false);
-    }
-
-    private void updateDummyEntityPosition()
-    {
-        this.dummy.prevPosX = this.prevPosition.x;
-        this.dummy.prevPosY = this.prevPosition.y;
-        this.dummy.prevPosZ = this.prevPosition.z;
-        this.dummy.lastTickPosX = this.prevPosition.x;
-        this.dummy.lastTickPosY = this.prevPosition.y;
-        this.dummy.lastTickPosZ = this.prevPosition.z;
-
-        this.dummy.setPosition(this.position.x, this.position.y, this.position.z);
     }
 
     @Override
@@ -236,7 +228,11 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
     @Override
     @Optional.Method(modid = BetterLightsConstants.ID)
     public void render(EntityLivingBase entity, double x, double y, double z, float entityYaw, float partialTicks) {
-        if (OptifineHelper.isOptifineShadowPass())
+        /*
+         * ApertureCamera is the tracker modifier and it
+         * renders morphs again which causes transformations to be messed up
+         */
+        if (OptifineHelper.isOptifineShadowPass() || ApertureCamera.enable)
         {
             return;
         }
@@ -295,11 +291,6 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
             this.dummy.setLifetime(this.dummy.getAge() + 2);
         }
 
-        if (this.dummy != null && this.isMorphEnabled())
-        {
-            this.updateDummyEntityPosition();
-        }
-
         this.updateLightcaster();
 
         if ((Minecraft.getMinecraft().gameSettings.showDebugInfo || GuiModelRenderer.isRendering()) && this.lightCaster != null)
@@ -317,17 +308,41 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
     {
         float outerRadius = this.getLightcaster().getDistance() * (float) Math.tan(Math.toRadians(this.getLightcaster().getOuterAngle()));
         float innerRadius = Math.min(outerRadius, this.getLightcaster().getDistance() * (float) Math.tan(Math.toRadians(this.getLightcaster().getInnerAngle())));
-        Vector3d direction = new Vector3d(0, 0, this.getLightcaster().getDistance());
+        /*
+         * can't retrieve the direction value from the lightcaster instance, as those are transformed by the morph's rotation
+         * and therefore not suitable for getting the rotation for rendering a cone in the UI
+         */
+        GenericNumberValue<?> x = (GenericNumberValue<?>) this.properties.values.getValue("DirectionX")
+                .flatMap((v) -> java.util.Optional.ofNullable(v instanceof GenericNumberValue<?> ? v : null))
+                .orElse((GenericBaseValue) new ValueDouble("", 0));
+        GenericNumberValue<?> y = (GenericNumberValue<?>) this.properties.values.getValue("DirectionY")
+                .flatMap((v) -> java.util.Optional.ofNullable(v instanceof GenericNumberValue<?> ? v : null))
+                .orElse((GenericBaseValue) new ValueDouble("", 0));
+        GenericNumberValue<?> z = (GenericNumberValue<?>) this.properties.values.getValue("DirectionZ")
+                .flatMap((v) -> java.util.Optional.ofNullable(v instanceof GenericNumberValue<?> ? v : null))
+                .orElse((GenericBaseValue) new ValueDouble("", 1));
+
+        org.joml.Vector3d direction = new org.joml.Vector3d(x.get().doubleValue(), y.get().doubleValue(), z.get().doubleValue());
+        Vector3d directionNorm = new Vector3d(0, 0, this.getLightcaster().getDistance());
+        org.joml.Vector3d rot = new Matrix3d().rotateTowards(direction, new org.joml.Vector3d(0, 0,1))
+                .getEulerAnglesXYZ(new org.joml.Vector3d());
         Color color = new Color(this.getLightcaster().getColor().x, this.getLightcaster().getColor().y, this.getLightcaster().getColor().z);
+
+        GlStateManager.pushMatrix();
+        GlStateManager.rotate((float) Math.toDegrees(rot.x), 1, 0, 0);
+        GlStateManager.rotate((float) Math.toDegrees(rot.y), 0, 1, 0);
+        GlStateManager.rotate((float) Math.toDegrees(rot.z), 0, 0, 1);
+
         OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240, 240);
         GlStateManager.disableLighting();
         GlStateManager.disableTexture2D();
         if (GuiModelRenderer.isRendering()) GlStateManager.disableDepth();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+
         BufferBuilder builder = Tessellator.getInstance().getBuffer();
 
-        RenderingUtils.renderCircle(direction, direction, outerRadius, 32, color, lineThickness);
-        RenderingUtils.renderCircleDotted(direction, direction, innerRadius, 32, color, lineThickness, 1);
+        RenderingUtils.renderCircle(directionNorm, directionNorm, outerRadius, 32, color, lineThickness);
+        RenderingUtils.renderCircleDotted(directionNorm, directionNorm, innerRadius, 32, color, lineThickness, 1);
 
         builder.begin(GL11.GL_LINE_STRIP, VertexBuilder.getFormat(true, false, false, false));
         GL11.glLineWidth(lineThickness);
@@ -346,6 +361,8 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
 
         Tessellator.getInstance().draw();
         GlStateManager.enableTexture2D();
+        GlStateManager.popMatrix();
+
         if (GuiModelRenderer.isRendering()) GlStateManager.enableDepth();
     }
 
@@ -637,6 +654,9 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
             catch (Exception e) { }
         }
 
+        /**
+         * Generate the {@link #valueTree} from the LightCaster class.
+         */
         @Optional.Method(modid = BetterLightsConstants.ID)
         private static void generate()
         {
@@ -942,6 +962,34 @@ public class BetterLightsMorph extends BetterLightsMorphTemplate implements IAni
                 {
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+
+    public static class BetterLightsRunnable extends ExpirableRunnable
+    {
+        private final Object lightcaster;
+        private final World world;
+
+        public BetterLightsRunnable(World world, Object lightCaster, int lifetime)
+        {
+            super(lifetime);
+
+            this.lightcaster = lightCaster;
+            this.world = world;
+        }
+
+        @Override
+        @Optional.Method(modid = BetterLightsConstants.ID)
+        public void run()
+        {
+            super.run();
+
+            if (this.lightcaster == null) return;
+
+            if (this.shouldRemove())
+            {
+                BetterLightsMod.getLightManager().removeLightCaster(this.world, (LightCaster) this.lightcaster, false);
             }
         }
     }
